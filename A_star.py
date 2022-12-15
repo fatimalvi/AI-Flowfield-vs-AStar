@@ -10,30 +10,42 @@ while grid_size != 12 and grid_size != 8 and grid_size != 14 and grid_size != 10
 
 enemies = int(input("Choose the number of obstacles: "))
 
-start = (0, 0)
-goal = (5, 5)
+print("Press the purple square to begin...")
+
+
+start_x = random.randint(0, grid_size - 1)
+start_y = random.randint(0, grid_size - 1)
+
+goal_x = random.randint(0, grid_size - 1)
+goal_y = random.randint(0, grid_size - 1)
+
+start = (start_x, start_y)
+goal = (goal_x, goal_y)
+
+#start = (0, 0)
+#goal = (5, 5)
 #grid_size = 8
 #enemies = 20
 
 if grid_size == 12:
     width = 650
     height = 650
-    button_location = (625, 10, 10, 10)
+    button_location = (625, 10, 20, 20)
 
 if grid_size == 14:
     width = 750
     height = 750
-    button_location = (725, 10, 10, 10)
+    button_location = (725, 10, 20, 20)
 
 if grid_size == 10:
     width = 550
     height = 550
-    button_location = (525, 10, 10, 10)
+    button_location = (525, 10, 20, 20)
 
 if grid_size == 8:
     width = 450
     height = 450
-    button_location = (425, 10, 10, 10)
+    button_location = (425, 10, 20, 20)
 
 
 
@@ -248,13 +260,15 @@ while running:
                         # the neighbor through the current node is lower than the previously
                         # recorded
 
-                                # recorded cost of reaching the neighbor, add the neighbor to the
+                        # recorded cost of reaching the neighbor, add the neighbor to the
                         # open nodes list and update the cost and path for the neighbor
                         if neighbor not in visited or cost < visited[neighbor]:
                             visited[neighbor] = cost
                             priority = cost + heuristic(neighbor, goal)
                             open_nodes.append((priority, neighbor))
                             paths[neighbor] = paths[node] + [neighbor]
+
+                            #print(paths)
 
                     pygame.time.wait(200)
 
@@ -272,7 +286,7 @@ while running:
                     pygame.display.update()
 
             # Return the path to the goal, if it was found, or an empty list otherwise
-        print(paths.get(goal, []))
+        #print(paths.get(goal, []))
         u = paths.get(goal, [])
 
         for uu in u:
@@ -287,3 +301,4 @@ while running:
 
 #Close the window and quit
 pygame.quit()
+
