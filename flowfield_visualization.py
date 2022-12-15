@@ -11,6 +11,7 @@ test_grid={}
 #user will specify the grid size, they'll have 4 sizes to choose from
 GRID_SIZE = int(input("choose a grid size from 8, 10, 12 or 14: "))
 
+
 #the box size will remain 50 * 50 no matter what grid size, for better visualization
 BOX_SIZE = 50
 
@@ -18,22 +19,24 @@ BOX_SIZE = 50
 while GRID_SIZE not in [8, 10, 12, 14]:
     GRID_SIZE = int(input("enter a valid grid size: "))
 
+obs_Num = int(input("Choose the number of obstacles: "))
+
 #depending on the grid size, generate the screen size and number of obstacles
 if(GRID_SIZE==8):
     screenh, screenw = 410, 800
-    obs_Num = 7
+    # obs_Num = 20
 
 elif(GRID_SIZE==10):
     screenh, screenw = 510, 900
-    obs_Num = 12
+    # obs_Num = 20
 
 elif(GRID_SIZE==12):
     screenh, screenw = 610, 1000
-    obs_Num = 17
+    # obs_Num = 17
 
 else:
     screenh, screenw = 710, 1100
-    obs_Num = 24
+    # obs_Num = 24
 
 #set up the pygame screen
 screen = pygame.display.set_mode((screenw, screenh))
